@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./node_modules/highlightjs/styles/atelier-cave.light.css">
+    <link rel="stylesheet" type="text/css" href="http://7xjf2l.com2.z0.glb.qiniucdn.com/atelier-cave.light.css">
 </head>
 <body ng-controller="feedbackCtrl">
 <div class="panel panel-default">
@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <input ng-model-options="{ updateOn: 'blur' }" ng-hide="typed(person.name)" class="form-control"
                            type="text" ng-model="person.name">
-                    <span class="label label-info" ng-show="typed(person.name)" ng-bind="person.name"></span>
+                    <span ng-click="person.name='Reset'" class="label label-info" ng-show="typed(person.name)" ng-bind="person.name"></span>
                 </div>
                 <div class="modal fade" id="model{{person.id}}">
                     <div class="modal-dialog">
