@@ -8,7 +8,7 @@
 <body ng-controller="feedbackCtrl">
 <div class="panel panel-default">
     <div class="panel-heading text-center">
-        <h1 >{{data.question}}<button class="btn btn-default" ng-click="choose()" >提问</button></h1>
+        <h1>{{data.question}}<button class="btn btn-default" ng-click="choose()" >提问</button></h1>
     </div>
     <div class="panel-body  text-center">
         <div class="row" ng-repeat="row in data.rows">
@@ -45,8 +45,20 @@
         </div>
     </div>
     <div class="panel-footer">
-        <input type="text" ng-model="data.question" class="form-control">
-        <button class="btn btn-warning" type="button" ng-click="start()">
+        <div class="row"><input type="text" ng-model="data.question" class="form-control"/></div>
+        <div class="row">
+            <div class="col-xs-3">
+                <button class="btn btn-warning" type="button" ng-click="start()">开始</button>
+            </div>
+            <div class="col-xs-3">
+                <input type="text" ng-model="data.column" class="form-control"/>
+            </div>
+            <div class="col-xs-3">
+                <input type="text" ng-model="data.row" class="form-control"/>
+            </div>
+            <div class="col-xs-3">
+                <button class="btn btn-default" ng-click="class()" >上课</button>
+            </div>
     </div>
 </div>
 
@@ -68,6 +80,7 @@
     app.controller("feedbackCtrl", function ($scope, $wilddogObject,$timeout) {
         var ref = new Wilddog("https://zffeedback.wilddogio.com");
         var data = $wilddogObject(ref);
+        $scope.back = data;
         data.$bindTo($scope,"data");
         $scope.luck = -1;
         $scope.typed = function(name){
@@ -75,20 +88,58 @@
         }
         $scope.choose = function(){
             var count = 0;
-            var max = Math.floor(Math.random()*144);
-            function next(){
+            var max = Math.floor(Math.random()*$scope.back.column*$scope.back.row);
+            function next(time){
                 $timeout(function(){
-                    var name = data.rows[Math.floor(count/12)][count%12].name;
-                    if(typed(name)){
+                    console.log($scope.back.rows,Math.floor(count/$scope.back.column),count%($scope.back.row));
+                    var name = $scope.back.rows[Math.floor(count/$scope.back.column)][count%($scope.back.row)].name;
+                    if($scope.typed(name) && (count<max)){
                         $scope.luck = count;
+                        count++;
+                        next(30);
+                    }else if(count<max){
+                        count++;
+                        next(0);
                     }
-                    if(count++<max){
-                        next();
-                    }
-                },23);
+                },time);
             }
-            next();
-
+            next(0);
+        }
+        var rowNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+        //上课
+        $scope.class = function(){
+            var rows = [];
+            $scope.back.rows = [];
+            for(var i=1;i<=data.column;i++){
+                var row = [];
+                var rowPrefix = [i];
+                for(var j=1;j<=data.row;j++){
+                    row.push({
+                        id:data.column*(i-1)+(j-1),
+                        name: rowNames[i-1]+j,
+                        answer: "",
+                        star: 0
+                    });
+                }
+                $scope.back.rows.push(row);
+                $scope.back.$save($scope.back.rows);
+            }
+        }
+        $scope.start = function(){
+            var rows = [];
+            $scope.back.rows = [];
+            for(var i=1;i<=data.column;i++){
+                var row = [];
+                var rowPrefix = [i];
+                for(var j=1;j<=data.row;j++){
+                    row.push({
+                        answer: "",
+                        star: 0
+                    });
+                }
+                $scope.back.rows.push(row);
+                $scope.back.$save($scope.back.rows);
+            }
         }
     });
 </script>
