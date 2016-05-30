@@ -133,7 +133,9 @@
                 $scope.back.$save($scope.back.rows);
             }
         };
+        //开始答题
         $scope.start = function () {
+            $scope.luck = -1;
             var rows = [];
             for (var i = 1; i <= data.row; i++) {
                 for (var j = 1; j <= data.column; j++) {
