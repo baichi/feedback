@@ -116,7 +116,7 @@
                 },time);
             }
             next(0);
-        }
+        };
         var rowNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         //上课
         $scope.class = function(){
@@ -136,7 +136,7 @@
                 $scope.back.rows.push(row);
                 $scope.back.$save($scope.back.rows);
             }
-        }
+        };
         $scope.start = function(){
             var rows = [];
             $scope.back.rows = [];
@@ -171,7 +171,6 @@
         $scope.inputAnswer = function(person){
             $scope.inputText = person.answer;
             $scope.$watch("inputText", function(newValue) {
-                console.log(newValue);
                 $scope.outputText = marked(newValue);
             });
         }
