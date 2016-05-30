@@ -9,59 +9,22 @@
 <body ng-controller="feedbackCtrl">
 <div class="panel panel-default">
     <div class="panel-heading text-center">
-        <h1 ng-bind="data.question"></h1>
-        <h2> <button class="btn btn-primary" ng-click="choose()">请回答</button></h2>
+        <h1>
+           管理
+        </h1>
     </div>
     <div class="panel-body  text-center">
-        <div class="row" ng-repeat="row in data.rows">
-            <div class="col-md-1" ng-class="{'jumbotron':luck == person.id }" ng-repeat="person in row">
-                <div class="form-group">
-                    <input ng-model-options="{ updateOn: 'blur' }" ng-hide="typed(person.name)" class="form-control"
-                           type="text" ng-model="person.name">
-                    <span ng-click="person.name='Reset'" class="label label-info" ng-show="typed(person.name)" ng-bind="person.name"></span>
-                </div>
-                <div class="modal fade" id="model{{person.id}}">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">回答</h4>
-                            </div>
-                            <div class="modal-body row">
-                                <div class="col-xs-6">
-                                    <textarea class="form-control" cols="90" rows="20" ng-model="person.answer"
-                                              ng-change="inputAnswer(person.answer)" tab></textarea>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="outputText fill" style="text-align: left;" id="outputText"
-                                         ng-bind-html="outputText"></div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-                <div class="form-group" ng-show="typed(person.name)">
-                    <button ng-hide="person.answer" class="btn btn-default btn-sm"
-                            ng-click="show('#model'+person.id,person.answer)">回答
-                    </button>
-                    <button ng-show="person.answer" class="btn btn-success btn-sm"
-                            ng-click="show('#model'+person.id,person.answer)">查看
-                    </button>
-                    <button class="btn" ng-class="{'btn-warning':person.star>0,'btn-danger':person.star>10,'btn-default':person.star==0}" type="button" ng-click="person.star = person.star+1">
-                        <span class="glyphicon glyphicon-star"></span> <span class="badge" ng-bind="person.star"></span>
-                    </button>
-                </div>
+        <div class="row">
+            <div class="col-xs-6">
+                列<input type="text" ng-model="data.column" class="form-control"/>
+            </div>
+            <div class="col-xs-6">
+                <button class="btn btn-danger  btn-lg" ng-click="class()">上课</button>
             </div>
         </div>
     </div>
     <div class="panel-footer">
-        <div class="row">
-            <div class="col-xs-10"><input type="text" ng-model="data.question" class="form-control"/></div>
-            <div class="col-xs-2"><button class="btn btn-warning btn-lg" type="button" ng-click="start()">开始</button></div>
-        </div>
+
     </div>
 </div>
 </body>
