@@ -44,14 +44,14 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-                <div class="form-group">
+                <div class="form-group" ng-show="typed(person.name)">
                     <button ng-hide="person.answer" class="btn btn-default btn-sm"
                             ng-click="show('#model'+person.id,person.answer)">回答
                     </button>
                     <button ng-show="person.answer" class="btn btn-success btn-sm"
                             ng-click="show('#model'+person.id,person.answer)">查看
                     </button>
-                    <button class="btn btn-warning btn-sm" type="button" ng-click="person.star = person.star+1">
+                    <button class="btn" ng-class="{'btn-warning':person.star>0,'btn-danger':person.star>10,'btn-default':person.star==0}" type="button" ng-click="person.star = person.star+1">
                         <span class="glyphicon glyphicon-star"></span> <span class="badge" ng-bind="person.star"></span>
                     </button>
                 </div>
