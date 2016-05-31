@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <input ng-model-options="{ updateOn: 'blur' }" ng-show="!person.name || !typed(person.name)" class="form-control"
                            type="text" ng-model="person.name" enter-confirm>
-                    <span ng-click="person.name='R'+person.name" class="label label-info" ng-show="person.name && typed(person.name)" ng-bind="person.name"></span>
+                    <span ng-dblclick="person.name='R'+person.name" class="label label-info" ng-show="person.name && typed(person.name)" ng-bind="person.name"></span>
                 </div>
                 <div class="modal fade" id="model{{person.id}}">
                     <div class="modal-dialog">
