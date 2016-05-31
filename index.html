@@ -17,7 +17,7 @@
             <div class="col-md-1" ng-class="{'jumbotron':luck == person.id }" ng-repeat="person in row">
                 <div class="form-group">
                     <input ng-model-options="{ updateOn: 'blur' }" ng-show="!person.name || !typed(person.name)" class="form-control"
-                           type="text" ng-model="person.name">
+                           type="text" ng-model="person.name" enter-confirm>
                     <span ng-click="person.name='R'+person.name" class="label label-info" ng-show="person.name && typed(person.name)" ng-bind="person.name"></span>
                 </div>
                 <div class="modal fade" id="model{{person.id}}">
@@ -182,6 +182,17 @@
                                 + '\t' + element.val().substring(end));
                         this.selectionStart = this.selectionEnd = start + 1;
                         element.triggerHandler('change');
+                    }
+                });
+            }
+        }
+    }).directive('enterConfirm',function(){
+        return {
+            link:function(scope,element,attrs){
+                element.on('keypress',function(e){
+                    var char = e.keyCode || e.which;
+                    if(char == 13){
+                        element.trigger('blur');
                     }
                 });
             }
