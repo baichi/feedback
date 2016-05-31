@@ -13,6 +13,11 @@
         <h2> <button class="btn btn-primary" ng-click="choose()">请回答</button></h2>
     </div>
     <div class="panel-body  text-center">
+        <div class="row">
+            <div class="col-xs-12 alert alert-success">
+                如何签到:大家可以先在编辑器中写好名单，然后拷贝到自己坐位对应的姓名编辑框，直接回车或用鼠标单击别处失去焦点即可
+            </div>
+        </div>
         <div class="row" ng-repeat="row in data.rows">
             <div class="col-md-1" ng-class="{'jumbotron':luck == person.id }" ng-repeat="person in row">
                 <div class="form-group">
