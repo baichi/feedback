@@ -9,9 +9,10 @@
 <body ng-controller="feedbackCtrl">
 <div class="panel panel-default">
     <div class="panel-heading text-center">
-        <h1>
-           管理
-        </h1>
+        <div class="row">
+            <div class="col-xs-10"><input type="text" ng-model="data.question" class="form-control"/></div>
+            <div class="col-xs-2"><button class="btn btn-warning btn-lg" type="button" ng-click="start()">开始</button></div>
+        </div>
     </div>
     <div class="panel-body  text-center">
         <div class="row">

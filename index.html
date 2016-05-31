@@ -16,9 +16,9 @@
         <div class="row" ng-repeat="row in data.rows">
             <div class="col-md-1" ng-class="{'jumbotron':luck == person.id }" ng-repeat="person in row">
                 <div class="form-group">
-                    <input ng-model-options="{ updateOn: 'blur' }" ng-hide="typed(person.name)" class="form-control"
+                    <input ng-model-options="{ updateOn: 'blur' }" ng-show="!person.name || !typed(person.name)" class="form-control"
                            type="text" ng-model="person.name">
-                    <span ng-click="person.name='Reset'" class="label label-info" ng-show="typed(person.name)" ng-bind="person.name"></span>
+                    <span ng-click="person.name='Reset'" class="label label-info" ng-show="person.name && typed(person.name)" ng-bind="person.name"></span>
                 </div>
                 <div class="modal fade" id="model{{person.id}}">
                     <div class="modal-dialog">
@@ -55,12 +55,6 @@
                     </button>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-xs-10"><input type="text" ng-model="data.question" class="form-control"/></div>
-            <div class="col-xs-2"><button class="btn btn-warning btn-lg" type="button" ng-click="start()">开始</button></div>
         </div>
     </div>
 </div>
