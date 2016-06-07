@@ -5,14 +5,14 @@ var rename = require('gulp-rename');
 var minifyCss = require('gulp-minify-css');
 var minifyHtml = require('gulp-minify-html');
 var connect = require('gulp-connect');
-
+rev  = require('gulp-rev'),//加MD5后缀
 gulp.task('html', function () {
     gulp.src(['./app/index.html', './app/admin.html']).pipe(minifyHtml())
         .pipe(gulp.dest('./build')).pipe(connect.reload());;
 });
 
 gulp.task('js', function () {
-    gulp.src(['./app/js/jquery.min.js', './app/js/bootstrap.min.js', './app/js/angular.min.js', './app/js/wilddog.js', './app/js/wild-angular.min.js', './app/js/angular-sanitize.min.js', './app/js/marked.min.js', './app/js/highlight.pack.min.js', './app/js/app.js']).pipe(concat('all.js')).pipe(gulp.dest('./build')).pipe(uglify()).pipe(rename('all.min.js')).pipe(gulp.dest('./build')).pipe(connect.reload());;
+    gulp.src(['./app/js/jquery.min.js', './app/js/bootstrap.min.js', './app/js/angular.min.js', './app/js/wilddog.js', './app/js/wild-angular.min.js', './app/js/angular-sanitize.min.js', './app/js/marked.min.js', './app/js/highlight.pack.min.js', './app/js/app.js']).pipe(concat('all.js')).pipe(gulp.dest('./build')).pipe(uglify()).pipe(rename('all.min.js')).pipe(rev()).pipe(gulp.dest('./build')).pipe(connect.reload());;
 });
 
 gulp.task('serve',function(){
