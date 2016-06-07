@@ -1,71 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="feedbackApp">
-<head>
-    <meta charset="UTF-8">
-    <title>首页</title>
-</head>
-<body ng-controller="feedbackCtrl">
-<div class="panel panel-default">
-    <div class="panel-heading text-center">
-        <h1 ng-bind="data.question"></h1>
-        <h2> <button class="btn btn-primary" ng-click="choose()">请回答</button></h2>
-    </div>
-    <div class="panel-body  text-center">
-        <div class="row">
-            <div class="col-xs-12 alert alert-success">
-                如何签到:大家可以先在编辑器中写好名单，然后拷贝到自己坐位对应的姓名编辑框，直接回车或用鼠标单击别处失去焦点即可
-            </div>
-        </div>
-        <div class="row" ng-repeat="row in data.rows">
-            <div class="col-md-1" ng-class="{'jumbotron':luck == person.id }" ng-repeat="person in row">
-                <div class="form-group">
-                    <input ng-model-options="{ updateOn: 'blur' }" ng-show="!person.name || !typed(person.name)" class="form-control"
-                           type="text" ng-model="person.name" enter-confirm>
-                    <span ng-dblclick="person.name='R'+person.name" class="label label-info" ng-show="person.name && typed(person.name)" ng-bind="person.name"></span>
-                </div>
-                <div class="modal fade" id="model{{person.id}}">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">回答</h4>
-                            </div>
-                            <div class="modal-body row">
-                                <div class="col-xs-6">
-                                    <textarea class="form-control" cols="90" rows="20" ng-model="person.answer"
-                                              ng-change="inputAnswer(person.answer)" tab></textarea>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="outputText fill" style="text-align: left;" id="outputText"
-                                         ng-bind-html="outputText"></div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-                <div class="form-group" ng-show="typed(person.name)">
-                    <button ng-hide="person.answer" class="btn btn-default btn-sm"
-                            ng-click="show('#model'+person.id,person.answer)">回答
-                    </button>
-                    <button ng-show="person.answer" class="btn btn-success btn-sm"
-                            ng-click="show('#model'+person.id,person.answer)">查看
-                    </button>
-                    <button ng-show="person.answer" class="btn" ng-class="{'btn-warning':person.star>0,'btn-danger':person.star>10,'btn-default':person.star==0}" type="button" ng-click="person.star = person.star+1">
-                        <span class="glyphicon glyphicon-star"></span> <span class="badge" ng-bind="person.star"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="1" data-title="珠峰课堂" data-url="http://zhufengnodejs.github.io/feedback/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
+<!DOCTYPE html><html lang=en ng-app=feedbackApp><head><meta charset=UTF-8><title>Title</title><link rel=stylesheet href=//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css><link rel=stylesheet type=text/css href=http://7xjf2l.com2.z0.glb.qiniucdn.com/atelier-cave.light.css></head><body ng-controller=feedbackCtrl><div class="panel panel-default"><div class="panel-heading text-center"><h1 ng-bind=data.question></h1><h2><button class="btn btn-primary" ng-click=choose()>请回答</button></h2></div><div class="panel-body text-center"><div class=row><div class="col-xs-12 alert alert-success">如何签到:大家可以先在编辑器中写好名单，然后拷贝到自己坐位对应的姓名编辑框，直接回车或用鼠标单击别处失去焦点即可</div></div><div class=row ng-repeat="row in data.rows"><div class=col-md-1 ng-class="{'jumbotron':luck == person.id }" ng-repeat="person in row"><div class=form-group><input ng-model-options="{ updateOn: 'blur' }" ng-show="!person.name || !typed(person.name)" class=form-control type=text ng-model=person.name enter-confirm> <span ng-dblclick="person.name='R'+person.name" class="label label-info" ng-show="person.name && typed(person.name)" ng-bind=person.name></span></div><div class="modal fade" id=model{{person.id}}><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button><h4 class=modal-title>回答</h4></div><div class="modal-body row"><div class=col-xs-6><textarea class=form-control cols=90 rows=20 ng-model=person.answer ng-change=inputAnswer(person.answer) tab></textarea></div><div class=col-xs-6><div class="outputText fill" style="text-align: left;" id=outputText ng-bind-html=outputText></div></div></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>关闭</button></div></div></div></div><div class=form-group ng-show=typed(person.name)><button ng-hide=person.answer class="btn btn-default btn-sm" ng-click="show('#model'+person.id,person.answer)">回答</button> <button ng-show=person.answer class="btn btn-success btn-sm" ng-click="show('#model'+person.id,person.answer)">查看</button> <button ng-show=person.answer class=btn ng-class="{'btn-warning':person.star>0,'btn-danger':person.star>10,'btn-default':person.star==0}" type=button ng-click="person.star = person.star+1"><span class="glyphicon glyphicon-star"></span> <span class=badge ng-bind=person.star></span></button></div></div></div></div></div><div class=ds-thread data-thread-key=1 data-title=珠峰课堂 data-url="http://zhufengnodejs.github.io/feedback/"></div><script type=text/javascript>
 var duoshuoQuery = {short_name:"zhufengfeedback"};
 	(function() {
 		var ds = document.createElement('script');
@@ -75,12 +8,7 @@ var duoshuoQuery = {short_name:"zhufengfeedback"};
 		(document.getElementsByTagName('head')[0] 
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
 	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-</body>
-
-<script type="javascript" src="bundle.js"></script>
-<script>
+	</script></body><script src=//cdn.bootcss.com/jquery/1.11.3/jquery.min.js></script><script src=//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js></script><script src=//cdn.bootcss.com/angular.js/1.4.6/angular.min.js></script><script src=https://cdn.wilddog.com/sdk/js/current/wilddog.js></script><script src=https://cdn.wilddog.com/libs/wild-angular/0.0.2/wild-angular.min.js></script><script src=http://7xjf2l.com2.z0.glb.qiniucdn.com/angular-sanitize.min.js></script><script src=http://7xjf2l.com2.z0.glb.qiniucdn.com/marked.min.js></script><script src=http://7xjf2l.com2.z0.glb.qiniucdn.com/highlight.pack.min.js></script><script>
     var app = angular.module("feedbackApp", ["wilddog", "ngSanitize"]);
     app.controller("feedbackCtrl", function ($scope, $wilddogObject, $timeout) {
         var ref = new Wilddog("https://8368feedback.wilddogio.com");
@@ -128,8 +56,8 @@ var duoshuoQuery = {short_name:"zhufengfeedback"};
                     });
                 }
                 $scope.back.rows.push(row);
-                $scope.back.$save($scope.back.rows);
             }
+            $scope.back.$save($scope.back.rows);
         };
         //开始答题
         $scope.start = function () {
@@ -140,8 +68,8 @@ var duoshuoQuery = {short_name:"zhufengfeedback"};
                     $scope.back.rows[i - 1][j - 1].answer = ""
                     $scope.back.rows[i - 1][j - 1].star = 0;
                 }
-                $scope.back.$save($scope.back.rows);
             }
+
         };
         $scope.show = function (id, answer) {
             $(id).modal('show',{ backdrop: 'static' })
@@ -202,7 +130,4 @@ var duoshuoQuery = {short_name:"zhufengfeedback"};
             }
         }
     });
-</script>
-
-
-</html>
+</script></html>
