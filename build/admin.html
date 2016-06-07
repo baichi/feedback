@@ -100,6 +100,7 @@
                 }
                 $scope.back.rows.push(row);
             }
+            $scope.back.$save($scope.back.rows);
         };
         //开始回答问题
         $scope.start = function () {
@@ -110,6 +111,7 @@
                     $scope.back.rows[i - 1][j - 1].star = 0;
                 }
             }
+            $scope.back.$save($scope.back.rows);
         };
         $scope.show = function (id, answer) {
             $(id).modal('show')
