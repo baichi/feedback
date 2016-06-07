@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="feedbackApp">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="http://7xjf2l.com2.z0.glb.qiniucdn.com/atelier-cave.light.css">
-</head>
-<body ng-controller="feedbackCtrl">
-<div class="panel panel-default">
-    <div class="panel-heading text-center">
-        <div class="row">
-            <div class="col-xs-10"><input type="text" ng-model="data.question" class="form-control"/></div>
-            <div class="col-xs-2"><button class="btn btn-warning btn-lg" type="button" ng-click="start()">开始</button></div>
-        </div>
-    </div>
-    <div class="panel-body  text-center">
-        <div class="row">
-            <div class="col-xs-4">
-                行<input type="text" ng-model="data.row" class="form-control"/>
-            </div>
-            <div class="col-xs-4">
-                列<input type="text" ng-model="data.column" class="form-control"/>
-            </div>
-            <div class="col-xs-4">
-                <button class="btn btn-danger  btn-lg" ng-click="class()">上课</button>
-            </div>
-        </div>
-    </div>
-    <div class="panel-footer">
-
-    </div>
-</div>
-</body>
-
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<!-- AngularJS -->
-<script src="//cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script>
-<!-- Wilddog -->
-<script src="https://cdn.wilddog.com/sdk/js/current/wilddog.js"></script>
-<!-- Wild-Angular -->
-<script src="https://cdn.wilddog.com/libs/wild-angular/0.0.2/wild-angular.min.js"></script>
-<!-- angular-sanitize -->
-<script src="http://7xjf2l.com2.z0.glb.qiniucdn.com/angular-sanitize.min.js"></script>
-<!-- marked -->
-<script src="http://7xjf2l.com2.z0.glb.qiniucdn.com/marked.min.js"></script>
-<!-- highlightjs -->
-<script src="http://7xjf2l.com2.z0.glb.qiniucdn.com/highlight.pack.min.js"></script>
-<script>
+<!DOCTYPE html><html lang=en ng-app=feedbackApp><head><meta charset=UTF-8><title>Title</title><link rel=stylesheet href=//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css><link rel=stylesheet type=text/css href=http://7xjf2l.com2.z0.glb.qiniucdn.com/atelier-cave.light.css></head><body ng-controller=feedbackCtrl><div class="panel panel-default"><div class="panel-heading text-center"><div class=row><div class=col-xs-10><input type=text ng-model=data.question class=form-control></div><div class=col-xs-2><button class="btn btn-warning btn-lg" type=button ng-click=start()>开始</button></div></div></div><div class="panel-body text-center"><div class=row><div class=col-xs-4>行<input type=text ng-model=data.row class=form-control></div><div class=col-xs-4>列<input type=text ng-model=data.column class=form-control></div><div class=col-xs-4><button class="btn btn-danger btn-lg" ng-click=class()>上课</button></div></div></div><div class=panel-footer></div></div></body><script src=//cdn.bootcss.com/jquery/1.11.3/jquery.min.js></script><script src=//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js></script><script src=//cdn.bootcss.com/angular.js/1.4.6/angular.min.js></script><script src=https://cdn.wilddog.com/sdk/js/current/wilddog.js></script><script src=https://cdn.wilddog.com/libs/wild-angular/0.0.2/wild-angular.min.js></script><script src=http://7xjf2l.com2.z0.glb.qiniucdn.com/angular-sanitize.min.js></script><script src=http://7xjf2l.com2.z0.glb.qiniucdn.com/marked.min.js></script><script src=http://7xjf2l.com2.z0.glb.qiniucdn.com/highlight.pack.min.js></script><script>
     var app = angular.module("feedbackApp", ["wilddog", "ngSanitize"]);
     app.controller("feedbackCtrl", function ($scope, $wilddogObject, $timeout) {
         var ref = new Wilddog("https://8368feedback.wilddogio.com");
@@ -161,5 +110,4 @@
             }
         }
     });
-</script>
-</html>
+</script></html>

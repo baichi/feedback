@@ -145,8 +145,8 @@ var duoshuoQuery = {short_name:"zhufengfeedback"};
                     });
                 }
                 $scope.back.rows.push(row);
-                $scope.back.$save($scope.back.rows);
             }
+            $scope.back.$save($scope.back.rows);
         };
         //开始答题
         $scope.start = function () {
@@ -157,8 +157,8 @@ var duoshuoQuery = {short_name:"zhufengfeedback"};
                     $scope.back.rows[i - 1][j - 1].answer = ""
                     $scope.back.rows[i - 1][j - 1].star = 0;
                 }
-                $scope.back.$save($scope.back.rows);
             }
+
         };
         $scope.show = function (id, answer) {
             $(id).modal('show',{ backdrop: 'static' })
