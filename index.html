@@ -84,7 +84,7 @@
 <script>
     var app = angular.module("feedbackApp", ["wilddog", "ngSanitize"]);
     app.controller("feedbackCtrl", function ($scope, $wilddogObject, $timeout) {
-        var ref = new Wilddog("https://zffeedback.wilddogio.com");
+        var ref = new Wilddog("https://8368feedback.wilddogio.com");
         var data = $wilddogObject(ref);
         $scope.back = data;
         data.$bindTo($scope, "data");
