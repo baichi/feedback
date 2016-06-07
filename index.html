@@ -145,7 +145,7 @@
             }
         };
         $scope.show = function (id, answer) {
-            $(id).modal('show')
+            $(id).modal('show',{ backdrop: 'static' })
             $scope.inputAnswer(answer);
         }
 

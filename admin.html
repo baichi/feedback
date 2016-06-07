@@ -61,6 +61,7 @@
         $scope.typed = function (name) {
             return !/^[A-Z]/.test(name);
         }
+
         $scope.choose = function () {
             var count = 0;
             var max = Math.ceil(Math.random() * $scope.back.column * $scope.back.row);
@@ -98,9 +99,9 @@
                     });
                 }
                 $scope.back.rows.push(row);
-                $scope.back.$save($scope.back.rows);
             }
         };
+        //开始回答问题
         $scope.start = function () {
             var rows = [];
             for (var i = 1; i <= data.row; i++) {
@@ -108,7 +109,6 @@
                     $scope.back.rows[i - 1][j - 1].answer = ""
                     $scope.back.rows[i - 1][j - 1].star = 0;
                 }
-                $scope.back.$save($scope.back.rows);
             }
         };
         $scope.show = function (id, answer) {
